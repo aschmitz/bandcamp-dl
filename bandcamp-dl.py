@@ -157,7 +157,7 @@ def collection(identity):
             "older_than_token": pagedata["{}_data".format(kind)]["last_token"],
         }
         if data["older_than_token"] is None:
-            break
+            continue
         while True:
             res = bc_json("fancollection/1/{}_items".format(kind), identity, data)
             yield from items(res)
